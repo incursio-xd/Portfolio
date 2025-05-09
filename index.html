@@ -846,21 +846,17 @@ img,
   transform: scale(1.2);
   fill: #00ffff;
 }
-
 .typed-cursor {
   opacity: 1;
 }
 .typed-cursor.typed-cursor--blink {
   animation: typedjsBlink 0.7s infinite;
-  -webkit-animation: typedjsBlink 0.7s infinite;
 }
 @keyframes typedjsBlink {
   0% { opacity: 1; }
   50% { opacity: 0; }
   100% { opacity: 1; }
 }
-
-
     </style>
   </head>
   <body>
@@ -1168,15 +1164,17 @@ headings.forEach(heading => {
           observer.observe(skillsContainer);
         });
       </script>
-      <script>
-        var typed = new Typed('.typed-text', {
-          strings: ["DSA", "Development", "IoT"],
-          typeSpeed: 60,
-          backSpeed: 40,
-          backDelay: 1500,
-          loop: true
-        });
-      </script> 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new Typed('.typed-text', {
+        strings: ["DSA", "Development", "IoT"],
+        typeSpeed: 60,
+        backSpeed: 40,
+        backDelay: 1500,
+        loop: true
+      });
+    });
+  </script>  
        <script>
         function handleScreenSize() {
           const isSmall = window.innerWidth < 900;
@@ -1196,6 +1194,6 @@ headings.forEach(heading => {
         window.addEventListener('load', handleScreenSize);
         window.addEventListener('resize', handleScreenSize);
       </script>
-           
+           <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   </body>
 </html>
