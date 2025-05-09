@@ -791,11 +791,21 @@ img,
   font-style: italic;
 }
 
-.typed-text {
+..typed-text {
   font-weight: bold;
   color: #00bcd4;
   font-size: clamp(1.2rem, 3vw, 1.8rem);
 }
+.typed-text::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 
 .intro-right {
   display: flex;
@@ -908,8 +918,8 @@ img,
           <div class="greeting">
             <h1>Hi,<br> Aman this side!</h1>
             <p class="intro-text">
-                I do all kinds of stuff, be it    <span class="typed-text"></span>
-              </p>              
+    I do all kinds of stuff, be it <span id="custom-typed" class="typed-text"></span>
+</p>              
           </div>
         </div>
       
@@ -1084,13 +1094,6 @@ img,
           </div>
         </div>
       </section> 
-        <script src="https://cdn.jsdelivr.net/gh/ericnagel/typed.js-clean@main/typed.min.js"></script>
-<script>
-  // Disable Typed.js from injecting its CSS (critical!)
-  Typed.prototype.appendAnimationCss = function() {
-    // prevents .typed-cursor CSS injection
-  };
-</script>
 
     <script>
       const panel = document.querySelector('.glow-panel');
@@ -1173,21 +1176,6 @@ headings.forEach(heading => {
           observer.observe(skillsContainer);
         });
       </script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-      new Typed('.typed-text', {
-        strings: ["DSA", "Development", "IoT"],
-        typeSpeed: 60,
-        backSpeed: 40,
-        backDelay: 1500,
-        loop: true
-      });
-    });
-  </script>  
-                <script>
-  // Disable Typed.js from injecting blinking CSS
-  Typed.prototype.appendAnimationCss = function() {};
-</script>
        <script>
         function handleScreenSize() {
           const isSmall = window.innerWidth < 900;
@@ -1207,6 +1195,39 @@ headings.forEach(heading => {
         window.addEventListener('load', handleScreenSize);
         window.addEventListener('resize', handleScreenSize);
       </script>
-        
+        <script>
+  const typedText = document.getElementById("custom-typed");
+  const phrases = ["DSA", "Development", "IoT"];
+  const typingSpeed = 60;
+  const erasingSpeed = 40;
+  const delayBetween = 1500;
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+    const currentPhrase = phrases[phraseIndex];
+
+    if (isDeleting) {
+      typedText.textContent = currentPhrase.substring(0, charIndex--);
+    } else {
+      typedText.textContent = currentPhrase.substring(0, charIndex++);
+    }
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+      setTimeout(() => isDeleting = true, delayBetween);
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+    }
+
+    const delay = isDeleting ? erasingSpeed : typingSpeed;
+    setTimeout(type, delay);
+  }
+
+  document.addEventListener("DOMContentLoaded", type);
+</script>
+
   </body>
 </html>
