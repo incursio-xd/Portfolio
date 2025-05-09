@@ -3,15 +3,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <head>
     <title>Aman Nath Jha</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/gif" href="/assets/moon.jpg">
     <style>
-        .section-heading {
+    .section-heading {
   opacity: 0;
   font-size: 48px;
   transform: translateY(-30px);
   transition: transform 0.6s ease, opacity 0.6s ease;
 }
-
 .section-heading.animate {
   opacity: 1;
   transform: translateY(0);
@@ -27,12 +26,36 @@
       }
 
       .top-bar {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        padding: 10px 20px;
-        gap: 10px;
-      }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000; /* your background color */
+  padding: 10px 20px;
+}
+
+.top-left {
+  display: flex;
+  align-items: center;
+}
+
+.top-logo {
+  height: 100px;
+  width: auto;
+}
+
+.top-right {
+  display: flex;
+  gap: 20px;
+}
+
+.top-right button {
+  background-color: #1e1e1e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+}
 
       .nav-button {
         background: #1c1c1c;
@@ -83,16 +106,18 @@
       }
 
       .glow-panel {
-        position: relative;
-        background: #1c1c1c;
-        color: #fff;
-        width: 60%;
-        margin: 0 auto;
-        padding: 20px;
-        border-radius: 10px;
-        text-align: right;
-        overflow: hidden;
-      }
+  position: relative;
+  background: #1c1c1c;
+  color: #fff;
+  width: 80%; /* Increased from 60% */
+  max-height: 600;
+  max-width: 1000px; /* Optional: set a max width for large screens */
+  margin: 0 auto;
+  padding: 40px; /* Increased padding for more space inside */
+  border-radius: 10px;
+  text-align: right;
+  overflow: hidden;
+}
 
       .glow-panel::before {
         content: '';
@@ -140,6 +165,7 @@
         scroll-snap-type: y mandatory;
         overflow-y: scroll;
         margin: 0;
+        font-family: 'Baskerville Old Face', serif;
       }
 
       html {
@@ -219,96 +245,198 @@
     transform: rotate(360deg);
   }
 }
-.experience-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
+.experience {
+  padding: 4rem 8%;
+  background-color: #000;
+  color: #fff;
 }
 
-@keyframes borderColorChange {
-  0% {
-    border-color: rgba(0, 255, 255, 0.4);
-  }
-  25% {
-    border-color: rgba(255, 0, 255, 0.4);
-  }
-  50% {
-    border-color: rgba(255, 255, 0, 0.4);
-  }
-  75% {
-    border-color: rgba(0, 255, 0, 0.4);
-  }
-  100% {
-    border-color: rgba(0, 255, 255, 0.4);
-  }
-}
-
-.experience-box {
-  padding: 20px;
-  width: 300px;
-  background-color: rgba(28, 28, 28, 0.8);
-  color: #e0e0e0;
-  border: 2px solid rgba(0, 255, 255, 0.4);
-  border-radius: 12px;
+.section-title {
   text-align: center;
-  font-size: 1em;
-  position: relative;
-  z-index: 1;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 0 5px rgba(0, 255, 255, 0.05);
-  animation: borderColorChange 6s infinite;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #00ffff;
 }
 
-.experience-box:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4),
-              0 0 25px rgba(0, 255, 255, 0.2),
-              inset 0 0 10px rgba(0, 255, 255, 0.1);
-  background: linear-gradient(145deg, rgba(40, 40, 40, 0.9), rgba(30, 30, 30, 0.9));
-}
-/* Intro Section Styling */
-#intro {
-  padding: 100px 20px;
-  background-color: #650746;
-}
-
-.intro-container {
+.experience-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 2rem;
 }
 
-/* Greeting Text Styling */
-.greeting {
+.experience-boxes {
   flex: 1;
-  min-width: 280px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.experience-box {
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  opacity: 0;
+  transform: translateY(40px);
+  animation: riseUp 0.8s ease-out forwards;
+}
+
+.experience-box:nth-child(1) { animation-delay: 0.1s; }
+.experience-box:nth-child(2) { animation-delay: 0.2s; }
+.experience-box:nth-child(3) { animation-delay: 0.3s; }
+.experience-box:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes riseUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.experience-animation {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+}
+
+.experience-animation lottie-player {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+}
+.experience-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.4); /* Glowing purple shadow */
+}
+.social-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px; /* increased spacing between icons */
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  fill: white;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+  fill: #00ffff;
+}
+
+.social-icon.download {
+  transform: rotate(180deg);
+  margin-left: -15px;
+}
+
+.social-icon.download:hover {
+  transform: rotate(180deg) scale(1.2);
+}
+
+
+
+/* Intro Section Styling */
+#intro {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.intro-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  padding: 0 40px;
+  background-color: #0a0a0a; /* Use a dark solid base */
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 1;
+  animation: scrollGrid 30s linear infinite;
+}
+@keyframes scrollGrid {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 40px;
+  }
+}
+
+
+.intro-left, .intro-right {
+  flex: 1 1 45%;
+  z-index: 2;
+}
+
+.intro-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 30px; /* Moves greeting down */
 }
 
 .greeting h1 {
-  font-size: 48px;
-  margin: 0 0 20px 0;
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 20px;
 }
 
 .greeting p {
-  font-size: 48px;
-  margin: 0;
+  font-size: 1.25rem;
+  color: white;
+  line-height: 1.5;
 }
 
-/* GIF Styling */
 .intro-gif {
-  flex: 1;
-  min-width: 280px;
-  text-align: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.intro-gif img {
-  max-width: 100%;
-  height: auto;
+.circle-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 20%, transparent 80%);
+  z-index: 0;
 }
+
+@media (max-width: 768px) {
+  .intro-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .intro-left, .intro-right {
+    flex: 1 1 100%;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .greeting {
+    margin-top: 60px;
+  }
+}
+
 #contact {
   background-color: #1c1c1c;
   color: #fff;
@@ -379,25 +507,275 @@ button[type="submit"]:hover {
     width: 100%;
   }
 }
+.myself-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.myself-image {
+  max-width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.myself-container p {
+  font-size: 1.2rem; /* Adjust as needed */
+  text-align: left;
+  margin: 0;
+  line-height: 1.6;
+}
+.projects-flex-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns: left for animation, right for projects */
+  gap: 30px;
+  padding: 40px 20px;
+  align-items: start;
+}
+
+.projects-animation {
+  max-width: 350px; /* Decrease animation size */
+  margin-left: 0;
+  grid-column: 1; /* Animation stays in the first column */
+}
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns for the projects */
+  gap: 20px;
+  grid-column: 2; /* Project stack stays in the second column */
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  width: 100%; /* Full width within grid */
+  max-width: 200px; /* Reduce card size */
+  height: 150px; /* Control card height */
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffcc);
+  animation: rotate 6s linear infinite;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 800px; /* or set width as needed */
+}
+
+.skill {
+  flex: 1 0 calc(20% - 20px); /* 5 items per row with spacing */
+  opacity: 0;
+  transform: translateX(100px);
+  background: #2c2c2c;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  text-align: center;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.skill.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+.intro-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 40px;
+  position: relative;
+  background-color: #0b0b0b;
+}
+
+.intro-left, .intro-right {
+  flex: 1 1 45%;
+  z-index: 1;
+}
+
+.intro-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.intro-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .intro-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .intro-left, .intro-right {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+}
+
+.circle-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 600px;
+  height: 100vh;
+  background: radial-gradient(circle at left center, #00bcd4, #00293c);
+  border-top-left-radius: 300px;
+  border-bottom-left-radius: 300px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: 0;
+}
+
+
+.intro-content {
+  position: relative;
+  z-index: 1;
+  max-width: 60%;
+}
+.greeting p {
+  font-size: 18px;
+  font-style: italic;
+  color: #ccc; /* optional for visual balance */
+  align-items: left;
+  left: 100px;
+}
+
+.typed-text {
+  font-weight: bold;
+  color: #00bcd4; /* Adjust color to match your theme */
+  font-size: 1.8rem;
+}
+
+
+
+
+.red-bg {
+  position: relative;
+  overflow: hidden;
+  background-color: #ffb3ff; /* or your red shade */
+  z-index: 1;
+}
+.red-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, 
+    transparent 50%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.05) 75%, transparent 75%, transparent);
+  background-size: 40px 40px;
+  z-index: 0;
+  animation: moveGrid 10s linear infinite;
+  pointer-events: none;
+}
+@keyframes moveGrid {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-40px, -40px);
+  }
+}
+
+.social-icon.github {
+  margin-right: 25px;
+}
+
+.social-icon.linkedin {
+  margin-right: -100px;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+  fill: #00ffff;
+}
 
     </style>
   </head>
   <body>
     <div class="top-bar">
+        <div class="top-left">
+        <img src="/assets/Screenshot 2025-05-08 201707.png" alt="Sign" class="top-logo"></div>
+        <div class="top-right">
       <button class="nav-button" onclick="document.getElementById('myself').scrollIntoView({ behavior: 'smooth' })">MySelf</button>
       <button class="nav-button" onclick="document.getElementById('skills').scrollIntoView({ behavior: 'smooth' })">Skills</button>
       <button class="nav-button" onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })">Projects</button>
+      <button class="nav-button" onclick="document.getElementById('experience').scrollIntoView({ behavior: 'smooth' })">Experience</button>
       <button class="nav-button" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Contact</button>
+    </div>
     </div>
 
     <!-- Page 1: Intro -->
-    <section id="intro">
-        <div class="section-box">
-        <div class="intro-container">
+    <section id="intro" class="intro-section intro-container">
+        <div class="circle-bg"></div>
+        
+        <!-- Greeting Section -->
+        <div class="intro-left">
+            <div class="social-buttons">
+                <!-- GitHub -->
+                <a href="https://github.com/incursio-xd" target="_blank" title="GitHub">
+                  <svg class="social-icon Github" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                    <path d="M12 .5C5.6.5.5 5.6.5 12a11.5 11.5 0 008 10.9c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.5-4-1.5-.5-1.3-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6-.9 1.6-.9.4-1 .7-1.2.5-1.8-2.7-.3-5.5-1.3-5.5-5.7 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.2 1.2a11 11 0 015.8 0C16.8 3 17.8 3.3 17.8 3.3c.6 1.7.2 2.9.1 3.2.7.9 1.2 2 1.2 3.2 0 4.4-2.8 5.4-5.5 5.7.4.3.7 1 .7 2.1v3.1c0 .3.2.7.8.6a11.5 11.5 0 008-10.9C23.5 5.6 18.4.5 12 .5z"/>
+                  </svg>
+                </a>
+              
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/aman-nath-jha-640a40286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" title="LinkedIn">
+                  <svg class="social-icon Linkedin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                    <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-.9 1.7-2.2 3.5-2.2 3.7 0 4.4 2.3 4.4 5.3V24h-4v-8.2c0-2-.1-4.5-2.8-4.5s-3.2 2.2-3.2 4.3V24h-4V8z"/>
+                  </svg>
+                </a>
+              
+                <!-- Resume Download -->
+<a href="/assets/apun ka resume.pdf" download title="Download Resume">
+    <svg class="social-icon download" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+      <path d="M5 20h14v-2H5v2zm7-18L5.33 8h3.67v6h4V8h3.67L12 2z"/>
+    </svg>
+  </a>
+              </div>                         
           <div class="greeting">
-            <h1>Hi, Aman this side!</h1>
-            <p>Welcome to my portfolio website.</p>
+            <h1>Hi,<br> Aman this side!</h1>
+            <p class="intro-text">
+                I do all kinds of stuff, be it    <span class="typed-text"></span>
+              </p>              
           </div>
+        </div>
+      
+        <!-- Animation Section -->
+        <div class="intro-right">
           <div class="intro-gif">
             <lottie-player
               src="/assets/landingPerson.json"
@@ -407,108 +785,146 @@ button[type="submit"]:hover {
               loop
               autoplay
             ></lottie-player>
-          </div>                  
-        </div>
+          </div>
         </div>
       </section>
-
+      
     <!-- Page 2: Myself -->
     <section id="myself">
         
-      <div class="main-content"><h2>MySelf</h2></div>
+      <div class="main-content"><h2 class="section-heading">MySelf</h2></div>
       <div class="section-box"></div>
       <div class="glow-panel">
-        <p>
-          Hey there! I'm someone who loves creating, building, and constantly learning new things. I'm curious by nature and always excited to explore how things work—whether it's in tech or everyday life. I enjoy solving problems, taking on challenges, and turning ideas into something real. When I’m not working on projects, you’ll probably find me experimenting with something new or planning what to build next. This portfolio is where I share a bit of that journey.
-        </p>
+        <div class="myself-container">
+          <img src="/assets/meh.jpg" alt="Me" class="myself-image" />
+          <p>
+            Hey there! I'm someone who loves creating, building, and constantly learning new things.
+            I'm curious by nature and always excited to explore how things work—whether it's in tech
+            or everyday life. I enjoy solving problems, taking on challenges, and turning ideas into
+            something real. When I'm not working on projects, you'll probably find me experimenting
+            with something new or planning what to build next. This portfolio is where I share a bit
+            of that journey.
+          </p>
+        </div>
       </div>
+      
     </section>
 
     <!-- Page 3: Skills -->
     <section id="skills">
         <div class="section-box">
-      <div class="main-content"><h2>Skills</h2></div>
+      <div class="main-content"><h2 class="section-heading">Skills</h2></div>
       <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-        <div class="about"><h3><small>Java</small></h3></div>
-        <div class="about"><h3><small>C/C++</small></h3></div>
-        <div class="about"><h3><small>Python</small></h3></div>
-        <div class="about"><h3><small>Swing</small></h3></div>
-        <div class="about"><h3><small>SpringBoot</small></h3></div>
-        <div class="about"><h3><small>HTML</small></h3></div>
-        <br>
-        <div class="about"><h3><small>CSS</small></h3></div>
-        <div class="about"><h3><small>JS</small></h3></div>
-        <div class="about"><h3><small>IoT</small></h3></div>
-        <div class="about"><h3><small>SQL</small></h3></div>
-        <div class="about"><h3><small>Tableau</small></h3></div>
-        <div class="about"><h3><small>Figma</small></h3></div>
-      </div>
-        </div>
+        <div class="skills-container">
+            <div class="skill">HTML5</div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">Java</div>
+            <div class="skill">C/C++</div>
+            <div class="skill">Swift</div>
+            <div class="skill">Python</div>
+            <div class="skill">SQL</div>
+            <div class="skill">SpringBoot</div>
+            <div class="skill">IoT</div>
+            <div class="skill">Figma</div>
+            <div class="skill">Tableau</div>
+          </div>          
     </section>
 
     <!-- Page 4: Projects -->
     <section id="projects">
         <div class="section-box">
-        <div class="main-content"><h2>Projects</h2></div>
-        <div class="project-container">
-            <div class="project-card">
-              <div class="project-card-content">
-                <h3>Shopping Mall Management System</h3>
-                <p>Java, Swing, DBMS, Flutter</p>
-              </div>
+          <div class="main-content">
+            <h2 class="section-heading">Projects</h2>
+          </div>
+      
+          <div class="projects-flex-container">
+            <!-- Left Side: Cartoon Animation -->
+            <div class="projects-animation">
+              <lottie-player
+                src="/assets/codingPerson.json"
+                background="transparent"
+                speed="1"
+                style="width: 100%; max-width: 350px; height: auto;"
+                loop
+                autoplay
+              ></lottie-player>
             </div>
-          
-            <div class="project-card">
-              <div class="project-card-content">
-                <h3>Disease Diagnosis System</h3>
-                <p>Python, StreamLit, Machine Learning</p>
+      
+            <!-- Right Side: Stacked Projects -->
+            <div class="project-list">
+              <div class="project-card">
+                <div class="project-card-content">
+                  <h3>Shopping Mall Management System</h3>
+                  <p>Java, Swing, DBMS, Flutter</p>
+                </div>
               </div>
-            </div>
-          
-            <div class="project-card">
-              <div class="project-card-content">
-                <h3>Banking System</h3>
-                <p>Java, SpringBoot, SQL, JPA, JWT</p>
+      
+              <div class="project-card">
+                <div class="project-card-content">
+                  <h3>Disease Diagnosis System</h3>
+                  <p>Python, StreamLit, Machine Learning</p>
+                </div>
               </div>
-            </div>
-          
-            <div class="project-card">
-              <div class="project-card-content">
-                <h3>Supply Chain Dashboard</h3>
-                <p>Excel, Tableau, Data Analysis</p>
+      
+              <div class="project-card">
+                <div class="project-card-content">
+                  <h3>Banking System</h3>
+                  <p>Java, SpringBoot, SQL, JPA, JWT</p>
+                </div>
+              </div>
+      
+              <div class="project-card">
+                <div class="project-card-content">
+                  <h3>Supply Chain Dashboard</h3>
+                  <p>Excel, Tableau, Data Analysis</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-    </section>
-
+      </section>
+      
     <!-- Page 5: Experience -->
-    <section>
-        <div class="section-box">
-        <div id="experience" class="main-content"><h2>Experience</h2></div>
-        <div class="experience-grid">
-          <div class="experience-box">
-            <p>Data Analytics & Web Dev Intern, TATA Steel</p>
+    <section class="experience" id="experience">
+        <h2 class="section-heading">Experience</h2>
+        <div class="experience-content">
+          <div class="experience-boxes">
+            <div class="experience-box"> 
+              <h3>Tata Steel</h3>
+              <p>Data Analysis & Web Dev Intern</p>
+            </div>
+            <div class="experience-box">
+              <h3>Tech Saksham</h3>
+              <p>AI/ML Intern</p>
+            </div>
+            <div class="experience-box">
+              <h3>Pinnacle Labs</h3>
+              <p>Java Dev Intern</p>
+            </div>
+            <div class="experience-box">
+              <h3>Code Alpha</h3>
+              <p>Java Dev Intern</p>
+            </div>
           </div>
-          <div class="experience-box">
-            <p>AI/ML Intern, Tech Saksham</p>
+          <div class="experience-animation">
+            <lottie-player
+              src="/assets/coder.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay>
+            </lottie-player>
           </div>
-          <div class="experience-box">
-            <p>Java Dev Intern, Pinnacle Labs</p>
-          </div>
-          <div class="experience-box">
-            <p>Java Dev Intern, Code Alpha</p>
-          </div>
-        </div>
         </div>
       </section>      
-    
+      
 
     <!-- Page 6: Contact -->
     <section id="contact">
         <div class="section-box">
         <div class="main-content">
-          <h2>Contact Me</h2>
+          <h2 class="section-heading">Contact Me</h2>
         </div>
         <div class="contact-form-container">
           <form action="mailto:amannathjha14@gmail.com" method="post" enctype="text/plain">
@@ -536,8 +952,8 @@ button[type="submit"]:hover {
         const rect = panel.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        panel.style.setProperty('--x', `${x}px`);
-        panel.style.setProperty('--y', `${y}px`);
+        panel.style.setProperty('--x', ${x}px);
+        panel.style.setProperty('--y', ${y}px);
       });
     </script>
     <script>
@@ -551,7 +967,7 @@ button[type="submit"]:hover {
             const rotateX = -(y - centerY) / 10;
             const rotateY = (x - centerX) / 10;
       
-            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            card.style.transform = rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05);
           });
       
           card.addEventListener('mouseleave', () => {
@@ -563,24 +979,64 @@ button[type="submit"]:hover {
 
       <script>
         const headings = document.querySelectorAll('.section-heading');
-      
-        const headingObserver = new IntersectionObserver(
-          (entries) => {
+
+// Create an IntersectionObserver to observe when headings come into view
+const headingObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Add 'animate' class to trigger the animation when heading is in view
+        entry.target.classList.add('animate');
+      } else {
+        // Remove 'animate' class when heading is out of view
+        entry.target.classList.remove('animate');
+      }
+    });
+  },
+  { threshold: 0.5 } // 50% of the element should be visible before triggering
+);
+
+// Observe each section heading
+headings.forEach(heading => {
+  headingObserver.observe(heading);
+});
+      </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const skills = document.querySelectorAll('.skill');
+          const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
               if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
+                skills.forEach((skill, index) => {
+                  // Reset styles first
+                  skill.classList.remove('show');
+                  setTimeout(() => {
+                    skill.classList.add('show');
+                  }, index * 400); // delay per item
+                });
               } else {
-                entry.target.classList.remove('animate');
+                skills.forEach(skill => {
+                  skill.classList.remove('show');
+                });
               }
             });
-          },
-          { threshold: 0.5 }
-        );
+          }, {
+            threshold: 0.3, // trigger when 30% visible
+          });
       
-        headings.forEach(heading => {
-          headingObserver.observe(heading);
+          const skillsContainer = document.querySelector('.skills-container');
+          observer.observe(skillsContainer);
         });
       </script>
-      
+      <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+      <script>
+        var typed = new Typed('.typed-text', {
+          strings: ["DSA", "Development", "IoT"],
+          typeSpeed: 60,
+          backSpeed: 40,
+          backDelay: 1500,
+          loop: true
+        });
+      </script>      
   </body>
 </html>
