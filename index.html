@@ -346,24 +346,21 @@
 
 
 
-/* Intro Section Styling */
 #intro {
   position: relative;
   padding: 0;
   margin: 0;
   overflow: hidden;
+  background-color: #0a0a0a;
 }
 
 .intro-container {
-  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  min-height: 100vh; /* change from fixed height */
   width: 100%;
-  padding: 0 40px;
-  background-color: #0a0a0a;
+  padding: 60px 40px;
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
@@ -382,41 +379,9 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-}
-
-.intro-left {
-  justify-content: flex-start;
-  margin-top: 30px;
-}
-
-.greeting h1 {
-  font-size: 3rem;
-  color: white;
-  margin-bottom: 20px;
-}
-
-.greeting p {
-  font-size: 1.25rem;
-  color: white;
-  line-height: 1.5;
-}
-
-.intro-gif {
-  display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-.circle-bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 20%, transparent 80%);
-  z-index: 0;
-}
-
-/* Social Buttons */
 .social-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -445,37 +410,68 @@
   transform: rotate(180deg) scale(1.2);
 }
 
-/* 📱 Mobile Optimization */
+.greeting h1 {
+  font-size: 3rem;
+  color: white;
+  margin: 20px 0 10px;
+}
+
+.greeting p {
+  font-size: 1.25rem;
+  color: #ccc;
+  line-height: 1.5;
+}
+
+.intro-gif {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  margin-top: 30px;
+}
+
+.circle-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 20%, transparent 80%);
+  z-index: 0;
+}
+
+/* 📱 Mobile Fixes */
 @media (max-width: 768px) {
   .intro-container {
     flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
     text-align: center;
-    padding: 60px 20px;
-    min-height: auto;
   }
 
   .intro-left, .intro-right {
     flex: 1 1 100%;
     align-items: center;
-    margin-top: 20px;
-  }
-
-  .greeting h1 {
-    font-size: 2rem;
-  }
-
-  .greeting p {
-    font-size: 1.1rem;
   }
 
   .social-buttons {
     justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .greeting h1 {
+    font-size: 2.2rem;
+    margin: 10px 0;
+  }
+
+  .greeting p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
   }
 
   .intro-gif {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 }
+
 
 #contact {
   background-color: #1c1c1c;
