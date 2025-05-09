@@ -857,6 +857,7 @@ img,
   50% { opacity: 0; }
   100% { opacity: 1; }
 }
+
     </style>
   </head>
   <body>
@@ -1084,6 +1085,13 @@ img,
         </div>
       </section> 
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+  // Disable Typed.js from injecting its CSS (critical!)
+  Typed.prototype.appendAnimationCss = function() {
+    // prevents .typed-cursor CSS injection
+  };
+</script>
+
     <script>
       const panel = document.querySelector('.glow-panel');
       panel.addEventListener('mousemove', (e) => {
@@ -1165,10 +1173,6 @@ headings.forEach(heading => {
           observer.observe(skillsContainer);
         });
       </script>
-        <script>
-  // Disable Typed.js from injecting blinking CSS
-  Typed.prototype.appendAnimationCss = function() {};
-</script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
       new Typed('.typed-text', {
@@ -1180,6 +1184,10 @@ headings.forEach(heading => {
       });
     });
   </script>  
+                <script>
+  // Disable Typed.js from injecting blinking CSS
+  Typed.prototype.appendAnimationCss = function() {};
+</script>
        <script>
         function handleScreenSize() {
           const isSmall = window.innerWidth < 900;
