@@ -27,6 +27,7 @@
 
       .top-bar {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   background-color: #000; /* your background color */
@@ -173,15 +174,16 @@
       }
 
       section {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        scroll-snap-align: start;
-        box-sizing: border-box;
-        padding: 40px 20px;
-      }
+  min-height: 100vh;
+  padding: clamp(40px, 8vh, 80px) 20px; /* vertical padding scales */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+  box-sizing: border-box;
+}
+
       .project-container {
   display: flex;
   flex-wrap: wrap;
@@ -345,43 +347,6 @@
 }
 
 
-
-#intro {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  background-color: #0a0a0a;
-}
-
-.intro-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 60px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 40px 40px;
-  z-index: 1;
-  animation: scrollGrid 30s linear infinite;
-}
-
-@keyframes scrollGrid {
-  from { background-position: 0 0; }
-  to { background-position: 40px 40px; }
-}
-
-.intro-left, .intro-right {
-  flex: 1 1 45%;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .social-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -410,24 +375,18 @@
   transform: rotate(180deg) scale(1.2);
 }
 
-.greeting h1 {
-  font-size: 3rem;
-  color: white;
-  margin: 20px 0 10px;
-}
 
-.greeting p {
-  font-size: 1.25rem;
-  color: #ccc;
-  line-height: 1.5;
-}
 
 .intro-gif {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 100%;
-  margin-top: 30px;
+  justify-content: flex-end; /* move right */
+  align-items: flex-start;   /* move up */
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  padding: 0 10px;
+  margin: 0 auto;
+  transform: translate(60px, -90px); /* shift right + up */
 }
 
 .circle-bg {
@@ -440,17 +399,36 @@
 
 /* 📱 Mobile Fixes */
 @media (max-width: 768px) {
-  .intro-container {
-    flex-direction: column;
+  .intro-left,
+  .intro-right {
+    flex: 1 1 100%;
+    max-width: 100%;
     align-items: center;
-    padding: 40px 20px;
-    text-align: center;
+    justify-content: center;
   }
 
-  .intro-left, .intro-right {
-    flex: 1 1 100%;
-    align-items: center;
+  .intro-container {
+    flex-wrap: nowrap;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
   }
+
+  .greeting h1 {
+    font-size: 1.8rem;
+  }
+
+  .greeting p {
+    font-size: 1rem;
+  }
+
+  .intro-gif {
+    max-width: 300px;
+  }
+}
+
+
+
 
   .social-buttons {
     justify-content: center;
@@ -468,9 +446,9 @@
   }
 
   .intro-gif {
-    margin-top: 20px;
+    margin-top: 100px;
   }
-}
+
 
 
 #contact {
@@ -545,8 +523,16 @@ button[type="submit"]:hover {
 }
 .myself-container {
   display: flex;
-  align-items: flex-start;
+  flex-direction: row;
   gap: 20px;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.myself-container p {
+  flex: 1;
+  min-width: 0;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
 }
 
 .myself-image {
@@ -555,12 +541,7 @@ button[type="submit"]:hover {
   border-radius: 10px;
   flex-shrink: 0;
 }
-.myself-container p {
-  font-size: 1.2rem; /* Adjust as needed */
-  text-align: left;
-  margin: 0;
-  line-height: 1.6;
-}
+
 .projects-flex-container {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two columns: left for animation, right for projects */
@@ -581,7 +562,6 @@ button[type="submit"]:hover {
   gap: 20px;
   grid-column: 2; /* Project stack stays in the second column */
 }
-
 .project-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -593,10 +573,13 @@ button[type="submit"]:hover {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  width: 100%; /* Full width within grid */
-  max-width: 200px; /* Reduce card size */
-  height: 150px; /* Control card height */
+
+  width: 100%;
+  max-width: clamp(150px, 45vw, 200px); /* scales based on screen size */
+  height: clamp(120px, 20vw, 150px);    /* scales height too */
+  box-sizing: border-box;
 }
+
 
 .project-card:hover {
   transform: translateY(-10px) scale(1.03);
@@ -642,6 +625,15 @@ button[type="submit"]:hover {
   opacity: 1;
   transform: translateX(0);
 }
+lottie-player,
+img,
+.intro-gif {
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+  object-fit: contain;
+  box-sizing: border-box;
+}
 .intro-section {
   display: flex;
   flex-wrap: wrap;
@@ -652,33 +644,8 @@ button[type="submit"]:hover {
   background-color: #0b0b0b;
 }
 
-.intro-left, .intro-right {
-  flex: 1 1 45%;
-  z-index: 1;
-}
 
-.intro-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
-.intro-right {
-  display: flex;
-  justify-content: flex-end;
-}
-
-@media (max-width: 768px) {
-  .intro-section {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .intro-left, .intro-right {
-    flex: 1 1 100%;
-    justify-content: center;
-  }
-}
 
 .circle-bg {
   position: absolute;
@@ -700,49 +667,111 @@ button[type="submit"]:hover {
   z-index: 1;
   max-width: 60%;
 }
+
+
+#intro {
+  background-color: #0a0a0a;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.intro-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: scrollGrid 30s linear infinite;
+  box-sizing: border-box;
+}
+
+@keyframes scrollGrid {
+  from { background-position: 0 0; }
+  to { background-position: 40px 40px; }
+}
+
+.intro-left, .intro-right {
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.intro-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px; /* 👈 add left padding */
+  padding-right: 20px;
+}
+@media (max-width: 768px) {
+  .intro-left {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.greeting h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: white;
+  margin: 0 0 10px;
+}
+
 .greeting p {
-  font-size: 18px;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #ccc;
+  line-height: 1.5;
   font-style: italic;
-  color: #ccc; /* optional for visual balance */
-  align-items: left;
-  left: 100px;
 }
 
 .typed-text {
   font-weight: bold;
-  color: #00bcd4; /* Adjust color to match your theme */
-  font-size: 1.8rem;
+  color: #00bcd4;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
 }
 
-
-
-
-.red-bg {
-  position: relative;
-  overflow: hidden;
-  background-color: #ffb3ff; /* or your red shade */
-  z-index: 1;
+.intro-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.red-bg::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background-image: linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, 
-    transparent 50%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.05) 75%, transparent 75%, transparent);
-  background-size: 40px 40px;
-  z-index: 0;
-  animation: moveGrid 10s linear infinite;
-  pointer-events: none;
+
+.intro-gif {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  object-fit: contain;
 }
-@keyframes moveGrid {
-  0% {
-    transform: translate(0, 0);
+
+/* Responsive scaling but keep side-by-side layout */
+@media (max-width: 768px) {
+  .intro-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 30px 20px;
   }
-  100% {
-    transform: translate(-40px, -40px);
+
+  .intro-left,
+  .intro-right {
+    flex: 1 1 100%;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .intro-gif {
+    max-width: 300px;
+    margin-top: 20px;
   }
 }
 
