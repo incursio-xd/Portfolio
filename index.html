@@ -1080,8 +1080,8 @@ img,
         const rect = panel.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        panel.style.setProperty('--x', ${x}px);
-        panel.style.setProperty('--y', ${y}px);
+        panel.style.setProperty('--x', `${x}px`);
+        panel.style.setProperty('--y', `${y}px`);
       });
     </script>
     <script>
@@ -1094,8 +1094,7 @@ img,
             const centerY = rect.height / 2;
             const rotateX = -(y - centerY) / 10;
             const rotateY = (x - centerX) / 10;
-      
-            card.style.transform = rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05);
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
           });
       
           card.addEventListener('mouseleave', () => {
@@ -1166,6 +1165,27 @@ headings.forEach(heading => {
           loop: true
         });
       </script> 
-       </div>      
+       </div> 
+       <script>
+        function handleScreenSize() {
+          const isSmall = window.innerWidth < 900;
+          const blocker = document.querySelector('.mobile-blocker');
+          if (isSmall) {
+            blocker.style.display = 'flex';
+            document.body.querySelectorAll('body > *:not(.mobile-blocker)').forEach(el => {
+              el.style.display = 'none';
+            });
+          } else {
+            blocker.style.display = 'none';
+            document.body.querySelectorAll('body > *:not(.mobile-blocker)').forEach(el => {
+              el.style.display = '';
+            });
+          }
+        }
+      
+        window.addEventListener('load', handleScreenSize);
+        window.addEventListener('resize', handleScreenSize);
+      </script>
+           
   </body>
 </html>
