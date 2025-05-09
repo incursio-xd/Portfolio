@@ -1165,6 +1165,10 @@ headings.forEach(heading => {
           observer.observe(skillsContainer);
         });
       </script>
+        <script>
+  // Disable Typed.js from injecting blinking CSS
+  Typed.prototype.appendAnimationCss = function() {};
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
       new Typed('.typed-text', {
