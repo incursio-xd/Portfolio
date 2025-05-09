@@ -5,7 +5,7 @@
     <title>Aman Nath Jha</title>
     <link rel="icon" type="image/gif" href="assets/moon.jpg">
     <style>
-      /* Default: hide the message and show the site */
+        /* Default: hide the message and show the site */
 .mobile-blocker {
   display: none;
 }
@@ -15,8 +15,8 @@
   body {
     background-color: #000;
   }
-
-  body > * {
+  @media (max-width: 900px) {
+  #site-wrapper {
     display: none !important;
   }
 
@@ -38,6 +38,8 @@
   }
 }
 
+}
+
 /* On large screens: show everything, hide the message */
 @media (min-width: 901px) {
   .mobile-blocker {
@@ -48,6 +50,7 @@
     display: block !important;
   }
 }
+
 
     .section-heading {
   opacity: 0;
@@ -729,13 +732,38 @@ img,
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  padding: 40px;
+  padding: 60px 40px;
+  box-sizing: border-box;
+  position: relative;
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   background-size: 40px 40px;
   animation: scrollGrid 30s linear infinite;
-  box-sizing: border-box;
+}
+
+.intro-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* aligns text to the left */
+  padding: 0 40px;
+  z-index: 2;
+}
+
+.intro-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.intro-gif {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
 }
 
 @keyframes scrollGrid {
@@ -749,19 +777,6 @@ img,
   box-sizing: border-box;
 }
 
-.intro-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 40px; /* 👈 add left padding */
-  padding-right: 20px;
-}
-@media (max-width: 768px) {
-  .intro-left {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
 
 .greeting h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
@@ -836,8 +851,9 @@ img,
   </head>
   <body>
     <div class="mobile-blocker">
-  🚫 Please view this site on a laptop or tablet.
-</div>
+        <p>Please view on a Laptop or Tablet</p>
+      </div>
+      <div id="site-wrapper">
     <div class="top-bar">
         <div class="top-left">
         <img src="assets/Screenshot 2025-05-08 201707.png" alt="Sign" class="top-logo"></div>
@@ -1056,7 +1072,8 @@ img,
           </form>
         </div>
         </div>
-      </section>      
+      </section>  
+      </div>    
 
     <script>
       const panel = document.querySelector('.glow-panel');
