@@ -317,9 +317,9 @@
 
 .experience-boxes {
   flex: 1;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .experience-box {
@@ -1036,29 +1036,29 @@ img,
       
     <!-- Page 5: Experience -->
     <section class="experience" id="experience">
-        <h2 class="section-heading">Experience</h2>
-        <div class="experience-content">
-          <div class="experience-boxes">
-            <div class="experience-box"> 
-              <h3>Tata Steel</h3>
-              <p>Data Analysis & Web Dev Intern</p>
-            </div>
-            <div class="experience-box">
-              <h3>Tech Saksham</h3>
-              <p>AI/ML Intern</p>
-            </div>
-          <div class="experience-animation">
-            <lottie-player
-              src="assets/coder.json"
-              background="transparent"
-              speed="1"
-              loop
-              autoplay>
-            </lottie-player>
-          </div>
-        </div>
-      </section>      
-      
+  <h2 class="section-heading">Experience</h2>
+  <div class="experience-content">
+    <div class="experience-boxes">
+      <div class="experience-box"> 
+        <h3>Tata Steel</h3>
+        <p>Data Analysis & Web Dev Intern</p>
+      </div>
+      <div class="experience-box">
+        <h3>Tech Saksham</h3>
+        <p>AI/ML Intern</p>
+      </div>
+    </div>
+    <div class="experience-animation">
+      <lottie-player
+        src="assets/coder.json"
+        background="transparent"
+        speed="1"
+        loop
+        autoplay>
+      </lottie-player>
+    </div>
+  </div>
+</section>    
 
     <!-- Page 6: Contact -->
     <section id="contact">
