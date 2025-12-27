@@ -50,11 +50,6 @@ Portfolio/
 6. **Contact**: Functional contact form
 
 
-## 🔗 Links
-
-- **GitHub**: [incursio-xd](https://github.com/incursio-xd)
-- **LinkedIn**: [Aman Nath Jha](https://www.linkedin.com/in/incursio)
-
 ## 📱 Viewing Instructions
 
 This portfolio is optimized for **desktop/laptop viewing** (screen width > 900px). Mobile users will see a friendly message suggesting laptop access for the best experience.
