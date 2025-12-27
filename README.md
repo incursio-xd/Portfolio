@@ -2,7 +2,6 @@
 
 A modern, interactive personal portfolio website showcasing my skills, projects, and experience with stunning animations and a sleek dark-themed design.
 
-![Portfolio Preview](assets/moon.jpg)
 
 ## ✨ Features
 
